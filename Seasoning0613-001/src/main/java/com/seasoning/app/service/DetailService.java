@@ -13,8 +13,6 @@ public interface DetailService {
 	public FoodDetailVO getFoodDetail() throws IOException;
 	public LodgmentDetailVO getLodgmentDetail() throws IOException;
 	
-	public CommonDetailVO getTourCommonDetail() throws IOException;
-	public CommonDetailVO getFoodCommonDetail() throws IOException;
-	public CommonDetailVO getLodgmentCommonDetail() throws IOException;
+	public CommonDetailVO getCommonDetail() throws IOException;
 
 }

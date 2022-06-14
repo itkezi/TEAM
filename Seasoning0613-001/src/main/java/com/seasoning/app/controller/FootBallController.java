@@ -44,13 +44,13 @@ public class FootBallController {
 		List<AroundVO> AroundList = aroundService.getAround("126.897243", "37.56823");
 		// 서울
 		List<LocationVO> SeoulTourList = tourService.get_TourLocation("1");
-		List<LocationVO> SeoulFoodList = foodService.getSeoul_FoodLocation();
-		List<LocationVO> SeoulLodgmentList = lodgmentService.getSeoul_LodgmentLocation();
+		List<LocationVO> SeoulFoodList = foodService.get_FoodLocation("1");
+		List<LocationVO> SeoulLodgmentList = lodgmentService.get_LodgmentLocation("1");
 		
 		//대구
 		List<LocationVO> DeaguTourList = tourService.get_TourLocation("4");
-		List<LocationVO> DeaguFoodList = foodService.getDeagu_FoodLocation();
-		List<LocationVO> DeaguLodgmentList = lodgmentService.getDeagu_LodgmentLocation();
+		List<LocationVO> DeaguFoodList = foodService.get_FoodLocation("4");
+		List<LocationVO> DeaguLodgmentList = lodgmentService.get_LodgmentLocation("1");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("SEOULaround",AroundList);
@@ -81,7 +81,7 @@ public class FootBallController {
 	public String gangwon1(Model model)throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("127.690945","37.855952");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("GANGWON1ROUND",AroundList);
@@ -93,7 +93,7 @@ public class FootBallController {
 	public String gangwon2(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("128.897503","37.773561");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("GANGWON2ROUND",AroundList);
@@ -105,7 +105,7 @@ public class FootBallController {
 	public String gimcheon(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("128.086509","36.139666");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("GIMCHEONAROUND",AroundList);
@@ -117,7 +117,7 @@ public class FootBallController {
 	public String incheon(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("126.643035","37.466131");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("INCHEONAROUND",AroundList);
@@ -128,7 +128,7 @@ public class FootBallController {
 	public String jeju(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("126.509361","33.246212");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("JEJUAROUND",AroundList);
@@ -140,7 +140,7 @@ public class FootBallController {
 	public String jeonbuk(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("127.06448","35.868071");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("JEONBUKAROUND",AroundList);
@@ -152,7 +152,7 @@ public class FootBallController {
 	public String pohang(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("129.384412","35.997745");
 		
 		model.addAttribute("FOOTBALL", fblist);
 
@@ -163,7 +163,7 @@ public class FootBallController {
 	public String seongnam(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("127.121273","37.410166");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("SEONGNAMAROUND",AroundList);
@@ -175,7 +175,7 @@ public class FootBallController {
 	public String suwon_ss(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("127.036855","37.286421");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("SUWONssAROUND",AroundList);
@@ -186,8 +186,9 @@ public class FootBallController {
 	@RequestMapping(value = "/fb-suwon")
 	public String suwon(Model model) throws IOException {
 
+		
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("127.011315","37.297746");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("SUWONAROUND",AroundList);
@@ -199,7 +200,7 @@ public class FootBallController {
 	public String ulsan(Model model) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
-		List<AroundVO> AroundList = aroundService.getAround();
+		List<AroundVO> AroundList = aroundService.getAround("129.259512","35.535328");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("ULSANAROUND",AroundList);

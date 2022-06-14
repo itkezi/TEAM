@@ -1,16 +1,19 @@
 package com.seasoning.app.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.seasoning.app.model.AroundVO;
 import com.seasoning.app.model.CommonDetailVO;
 import com.seasoning.app.model.FoodDetailVO;
 import com.seasoning.app.model.LodgmentDetailVO;
 import com.seasoning.app.model.TourDetailVO;
+import com.seasoning.app.service.AroundService;
 import com.seasoning.app.service.DetailService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -24,13 +27,19 @@ public class DetailController {
 	@Autowired
 	public DetailService detailService;
 	
+	@Autowired
+	private AroundService aroundService;
+	
 	@RequestMapping(value="/detail")
 	public String detail(Model model) throws IOException {
+		
 		FoodDetailVO foodDetailVO = detailService.getFoodDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getFoodCommonDetail();
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
+		List<AroundVO> AroundList = aroundService.getDetailAround(CommonDetailVO.mapx, CommonDetailVO.mapy, CommonDetailVO.contenttypeid );
 		
 		model.addAttribute("FOODDETAIL",foodDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
+		model.addAttribute("AROUND",AroundList);
 		return "/detail/detail";
 	}
 	
@@ -38,7 +47,7 @@ public class DetailController {
 	public String tour_detail(Model model) throws IOException{
 		
 		TourDetailVO TourDetailVO = detailService.getTourDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getTourCommonDetail();
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
 		
 		model.addAttribute("TOURDETAIL",TourDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
@@ -51,7 +60,7 @@ public class DetailController {
 	public String food_detail(Model model) throws IOException{
 		
 		FoodDetailVO foodDetailVO = detailService.getFoodDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getFoodCommonDetail();
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
 		
 		model.addAttribute("FOODDETAIL",foodDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
@@ -64,7 +73,7 @@ public class DetailController {
 	public String lodgment_detail(Model model) throws IOException{
 		
 		LodgmentDetailVO lodgmentDetailVO = detailService.getLodgmentDetail();
-		CommonDetailVO CommonDetailVO = detailService.getLodgmentCommonDetail();
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
 		
 		model.addAttribute("LODGMENTDETAIL",lodgmentDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);

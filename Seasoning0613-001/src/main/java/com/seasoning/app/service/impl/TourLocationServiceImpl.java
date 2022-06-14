@@ -30,7 +30,7 @@ public class TourLocationServiceImpl implements TourLocationService{
 	
 	//TODO 서울 지역별 API
 	@Override
-	public List<LocationVO>  get_TourLocation(String location) throws IOException{
+	public List<LocationVO>  get_TourLocation(String areaCode) throws IOException{
 		//공공데이터 키값하고 원하는 설정 연결하기
 		String url ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"; /*URL*/
 		try {
@@ -39,7 +39,7 @@ public class TourLocationServiceImpl implements TourLocationService{
 			url += ("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호 이거 필수값 아님 없애도 됨*/
 			url +=  ("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 			url += ("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
-			url += ("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(location, "UTF-8")); /*지역코드, 시군구코드*/
+			url += ("&" + URLEncoder.encode("areaCode","UTF-8") + "=" + URLEncoder.encode(areaCode, "UTF-8")); /*지역코드, 시군구코드*/
 			url += ("&" + URLEncoder.encode("arrange","UTF-8") + "=" + URLEncoder.encode("P", "UTF-8")); /*대표이미지 있는 조회순 정렬*/
 			url += ("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("12", "UTF-8")); /*관광지 코드 선택*/
 		} catch (UnsupportedEncodingException e) {
