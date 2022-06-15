@@ -42,7 +42,7 @@
 						<div class="slide">		
 							<c:forEach items="${SEOULtour}" var="SEOULtour">
 								<div class="attr-container">
-								<a href="${rootPath}/detail/ex" style="color: black">
+								<a href="${rootPath}/detail/fooddetail/${SEOULtour.contentid}" style="color: black">
 									<span class="img"><img src="${SEOULtour.firstimage}"></span>
 									<span>[명소]&nbsp; <b>${SEOULtour.title}</b></span>
 									<span class="content">
@@ -72,12 +72,14 @@
 						<div class="slide">		
 							<c:forEach items="${SEOULfood}" var="SEOULfood">
 								<div class="attr-container">
+								<a href="${rootPath}/detail/fooddetail/${SEOULfood.contentid}" style="color: black">
 									<span class="img"><img src="${SEOULfood.firstimage}"></span>
 									<span>[식당]&nbsp; <b>${SEOULfood.title}</b></span>
 									<span class="content">
 										<span>${SEOULfood.addr1}</span>
 										<span>${SEOULfood.tel}</span>
 									</span>
+									</a>
 								</div>
 							</c:forEach>
 						</div>
@@ -100,12 +102,14 @@
 						<div class="slide">		
 							<c:forEach items="${SEOULlodgment}" var="SEOULlodgment">
 								<div class="attr-container">
+								<a href="${rootPath}/detail/fooddetail/${SEOULlodgment.contentid}" style="color: black">
 									<span class="img"><img src="${SEOULlodgment.firstimage}"></span>
 									<span>[숙박]&nbsp; <b>${SEOULlodgment.title}</b></span>
 									<span class="content">
 										<span>${SEOULlodgment.addr1}</span>
 										<span>${SEOULlodgment.tel}</span>
 									</span>
+								</a>
 								</div>
 							</c:forEach>
 						</div>

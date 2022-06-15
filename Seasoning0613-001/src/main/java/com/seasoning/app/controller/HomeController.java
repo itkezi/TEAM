@@ -14,17 +14,17 @@ public class HomeController {
 	
 	@RequestMapping(value="/football", method = RequestMethod.GET)
 	public String football() {
-		return "football/fb-seoul";
+		return "/football/fb-seoul";
 	}
 	
 	@RequestMapping(value="/baseball", method = RequestMethod.GET)
 	public String baseball() {
-		return "baseball/bb-dusan";
+		return "/baseball/bb-dusan";
 	}
 	
 	@RequestMapping(value="/volleyball", method = RequestMethod.GET)
 	public String volleyball() {
-		return "football/fb-seoul";
+		return "/football/fb-seoul";
 	}
 	
 

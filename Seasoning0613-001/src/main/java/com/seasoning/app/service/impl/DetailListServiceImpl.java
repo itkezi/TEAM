@@ -8,6 +8,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,13 @@ import com.seasoning.app.service.DetailService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class DetailListServiceImpl implements DetailService{
 
 	
 	//TODO  관광지
 	@Override
-	public TourDetailVO getTourDetail() throws IOException {
+	public TourDetailVO getTourDetail(String contentId) throws IOException {
 		//공공데이터 키값하고 원하는 설정 연결하기
 		String url ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"; /*URL*/
 		try {
@@ -49,7 +49,6 @@ public class DetailListServiceImpl implements DetailService{
         HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
-        log.debug("Response code: " + conn.getResponseCode());
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -71,7 +70,6 @@ public class DetailListServiceImpl implements DetailService{
         //xml json으로 형변환
         JSONObject json = XML.toJSONObject(retString);
         String jsonStr = json.toString(4);
-        log.debug(jsonStr);
         
        
         // JSONObject형식으로 지정
@@ -79,33 +77,28 @@ public class DetailListServiceImpl implements DetailService{
         
         //response 안으로
         JSONObject response = jObject.getJSONObject("response");
-        log.debug(response.toString(4));
         
         // body 안으로
         JSONObject body = response.getJSONObject("body");
-        log.debug(body.toString(4));
         
         //items 안으로
         JSONObject items = body.getJSONObject("items");
-        log.debug(items.toString(4));
         
         //item 선택
         JSONObject item = items.getJSONObject("item");
-        log.debug(item.toString(4));
       
         // VO에 저장
         Gson gson = new Gson();
         TourDetailVO vo = gson.fromJson(item.toString(), TourDetailVO.class);
         
         //값 지정해서 콘텐츠 아이디 뽑아버리기
-        log.debug(vo.contentid);
         
         return vo;
 	}
 	
 	//TODO 음식
 	@Override
-	public FoodDetailVO getFoodDetail() throws IOException {
+	public FoodDetailVO getFoodDetail(String contentId) throws IOException {
 		//공공데이터 키값하고 원하는 설정 연결하기
 				String url ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"; /*URL*/
 				try {
@@ -126,7 +119,6 @@ public class DetailListServiceImpl implements DetailService{
 		        HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
 		        conn.setRequestMethod("GET");
 		        conn.setRequestProperty("Content-type", "application/json");
-		        log.debug("Response code: " + conn.getResponseCode());
 		        BufferedReader rd;
 		        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 		            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -148,7 +140,6 @@ public class DetailListServiceImpl implements DetailService{
 		        //xml json으로 형변환
 		        JSONObject json = XML.toJSONObject(retString);
 		        String jsonStr = json.toString(4);
-		        log.debug(jsonStr);
 		        
 		       
 		        // JSONObject형식으로 지정
@@ -156,32 +147,26 @@ public class DetailListServiceImpl implements DetailService{
 		        
 		        //response 안으로
 		        JSONObject response = jObject.getJSONObject("response");
-		        log.debug(response.toString(4));
 		        
 		        // body 안으로
 		        JSONObject body = response.getJSONObject("body");
-		        log.debug(body.toString(4));
 		        
 		        //items 안으로
 		        JSONObject items = body.getJSONObject("items");
-		        log.debug(items.toString(4));
 		        
 		        //item 선택
 		        JSONObject item = items.getJSONObject("item");
-		        log.debug(item.toString(4));
 		      
 		        // VO에 저장
 		        Gson gson = new Gson();
 		        FoodDetailVO vo = gson.fromJson(item.toString(), FoodDetailVO.class);
 		        
 		        //값 지정해서 콘텐츠 아이디 뽑아버리기
-		        log.debug(vo.contentid);
-		        
 		        return vo;
 	}
 
 	@Override
-	public LodgmentDetailVO getLodgmentDetail() throws IOException {
+	public LodgmentDetailVO getLodgmentDetail(String contentId) throws IOException {
 		//공공데이터 키값하고 원하는 설정 연결하기
 				String url ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro"; /*URL*/
 				try {
@@ -202,7 +187,6 @@ public class DetailListServiceImpl implements DetailService{
 		        HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
 		        conn.setRequestMethod("GET");
 		        conn.setRequestProperty("Content-type", "application/json");
-		        log.debug("Response code: " + conn.getResponseCode());
 		        BufferedReader rd;
 		        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 		            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -224,7 +208,6 @@ public class DetailListServiceImpl implements DetailService{
 		        //xml json으로 형변환
 		        JSONObject json = XML.toJSONObject(retString);
 		        String jsonStr = json.toString(4);
-		        log.debug(jsonStr);
 		        
 		       
 		        // JSONObject형식으로 지정
@@ -232,26 +215,21 @@ public class DetailListServiceImpl implements DetailService{
 		        
 		        //response 안으로
 		        JSONObject response = jObject.getJSONObject("response");
-		        log.debug(response.toString(4));
 		        
 		        // body 안으로
 		        JSONObject body = response.getJSONObject("body");
-		        log.debug(body.toString(4));
 		        
 		        //items 안으로
 		        JSONObject items = body.getJSONObject("items");
-		        log.debug(items.toString(4));
 		        
 		        //item 선택
 		        JSONObject item = items.getJSONObject("item");
-		        log.debug(item.toString(4));
 		      
 		        // VO에 저장
 		        Gson gson = new Gson();
 		        LodgmentDetailVO vo = gson.fromJson(item.toString(), LodgmentDetailVO.class);
 		        
 		        //값 지정해서 콘텐츠 아이디 뽑아버리기
-		        log.debug(vo.contentid);
 		        
 		        return vo;
 	}
@@ -259,7 +237,7 @@ public class DetailListServiceImpl implements DetailService{
 	
 	//TODO 공통정보 조회
 	@Override
-	public CommonDetailVO getCommonDetail() throws IOException {
+	public CommonDetailVO getCommonDetail(String contentid) throws IOException {
 		//공공데이터 키값하고 원하는 설정 연결하기
 				String url ="http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon"; /*URL*/
 				try {
@@ -268,7 +246,7 @@ public class DetailListServiceImpl implements DetailService{
 					url += ("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*현재 페이지 번호 이거 필수값 아님 없애도 됨*/
 					url +=  ("&" + URLEncoder.encode("MobileOS","UTF-8") + "=" + URLEncoder.encode("ETC", "UTF-8")); /*IOS (아이폰), AND (안드로이드), WIN (원도우폰), ETC*/
 					url += ("&" + URLEncoder.encode("MobileApp","UTF-8") + "=" + URLEncoder.encode("AppTest", "UTF-8")); /*서비스명=어플명*/
-					url += ("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode("133324", "UTF-8")); /*서비스명=어플명*/
+					url += ("&" + URLEncoder.encode("contentId","UTF-8") + "=" + URLEncoder.encode(contentid, "UTF-8")); /*서비스명=어플명*/
 					url += ("&" + URLEncoder.encode("contentTypeId","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*서비스명=어플명*/
 					url += ("&" + URLEncoder.encode("defaultYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*서비스명=어플명*/
 					url += ("&" + URLEncoder.encode("firstImageYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*서비스명=어플명*/
@@ -285,7 +263,6 @@ public class DetailListServiceImpl implements DetailService{
 		        HttpURLConnection conn = (HttpURLConnection) realUrl.openConnection();
 		        conn.setRequestMethod("GET");
 		        conn.setRequestProperty("Content-type", "application/json");
-		        log.debug("Response code: " + conn.getResponseCode());
 		        BufferedReader rd;
 		        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 		            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -307,7 +284,6 @@ public class DetailListServiceImpl implements DetailService{
 		        //xml json으로 형변환
 		        JSONObject json = XML.toJSONObject(retString);
 		        String jsonStr = json.toString(4);
-		        log.debug(jsonStr);
 		        
 		       
 		        // JSONObject형식으로 지정
@@ -315,19 +291,15 @@ public class DetailListServiceImpl implements DetailService{
 		        
 		        //response 안으로
 		        JSONObject response = jObject.getJSONObject("response");
-		        log.debug(response.toString(4));
 		        
 		        // body 안으로
 		        JSONObject body = response.getJSONObject("body");
-		        log.debug(body.toString(4));
 		        
 		        //items 안으로
 		        JSONObject items = body.getJSONObject("items");
-		        log.debug(items.toString(4));
 		        
-		        //item 선택
+		        //item은 배열로 생성
 		        JSONObject item = items.getJSONObject("item");
-		        log.debug(item.toString(4));
 		      
 		        // VO에 저장
 		        Gson gson = new Gson();

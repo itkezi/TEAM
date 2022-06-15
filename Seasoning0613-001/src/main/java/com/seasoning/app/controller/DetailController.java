@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.seasoning.app.model.AroundVO;
@@ -30,24 +32,24 @@ public class DetailController {
 	@Autowired
 	private AroundService aroundService;
 	
-	@RequestMapping(value="/detail")
-	public String detail(Model model) throws IOException {
+	@RequestMapping(value="/fooddetail/{contentid}")
+	public String detail(@PathVariable("contentid") String contentid, Model model) throws IOException {
 		
-		FoodDetailVO foodDetailVO = detailService.getFoodDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
+		FoodDetailVO foodDetailVO = detailService.getFoodDetail(contentid) ;
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail(contentid);
 		List<AroundVO> AroundList = aroundService.getDetailAround(CommonDetailVO.mapx, CommonDetailVO.mapy, CommonDetailVO.contenttypeid );
 		
 		model.addAttribute("FOODDETAIL",foodDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
 		model.addAttribute("AROUND",AroundList);
-		return "/detail/detail";
+		return "/detail/fooddetail";
 	}
 	
 	@RequestMapping(value ="/tour_detail")
-	public String tour_detail(Model model) throws IOException{
+	public String tour_detail(Model model, String contentid) throws IOException{
 		
-		TourDetailVO TourDetailVO = detailService.getTourDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
+		TourDetailVO TourDetailVO = detailService.getTourDetail(contentid) ;
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail(contentid);
 		
 		model.addAttribute("TOURDETAIL",TourDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
@@ -57,10 +59,10 @@ public class DetailController {
 	}
 	
 	@RequestMapping(value ="/food_detail")
-	public String food_detail(Model model) throws IOException{
+	public String food_detail(Model model, String contentid) throws IOException{
 		
-		FoodDetailVO foodDetailVO = detailService.getFoodDetail() ;
-		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
+		FoodDetailVO foodDetailVO = detailService.getFoodDetail(contentid) ;
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail(contentid);
 		
 		model.addAttribute("FOODDETAIL",foodDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);
@@ -70,10 +72,10 @@ public class DetailController {
 	}
 	
 	@RequestMapping(value ="/lodgment_detail")
-	public String lodgment_detail(Model model) throws IOException{
+	public String lodgment_detail(Model model, String contentid) throws IOException{
 		
-		LodgmentDetailVO lodgmentDetailVO = detailService.getLodgmentDetail();
-		CommonDetailVO CommonDetailVO = detailService.getCommonDetail();
+		LodgmentDetailVO lodgmentDetailVO = detailService.getLodgmentDetail(contentid);
+		CommonDetailVO CommonDetailVO = detailService.getCommonDetail(contentid);
 		
 		model.addAttribute("LODGMENTDETAIL",lodgmentDetailVO);
 		model.addAttribute("COMMONDETAIL",CommonDetailVO);

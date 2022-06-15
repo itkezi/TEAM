@@ -90,3 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const detail_div = document.querySelector("div.hj-detail-otherbox");
+
+  detail_div?.addEventListener("click", (e) => {
+    const foreach = e.target;
+    if (foreach.tagName === "FOR") {
+      const div = foreach.closest("TR");
+      const contentId = div.dataset.contentId;
+      document.location.href = `${rootPath}/${contentId}/detail`;
+    }
+  });
+});

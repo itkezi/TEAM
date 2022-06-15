@@ -36,6 +36,5 @@ public class LocationVO {
 	public String title;
 	public String zipcode;
 
-
-
 }
+

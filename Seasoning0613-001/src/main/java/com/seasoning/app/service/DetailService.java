@@ -9,10 +9,10 @@ import com.seasoning.app.model.TourDetailVO;
 
 public interface DetailService {
 	
-	public TourDetailVO getTourDetail() throws IOException;
-	public FoodDetailVO getFoodDetail() throws IOException;
-	public LodgmentDetailVO getLodgmentDetail() throws IOException;
+	public TourDetailVO getTourDetail(String contentId) throws IOException;
+	public FoodDetailVO getFoodDetail(String contentId) throws IOException;
+	public LodgmentDetailVO getLodgmentDetail(String contentId) throws IOException;
 	
-	public CommonDetailVO getCommonDetail() throws IOException;
+	public CommonDetailVO getCommonDetail(String contentId) throws IOException;
 
 }

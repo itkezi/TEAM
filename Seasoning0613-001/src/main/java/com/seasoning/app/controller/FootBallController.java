@@ -38,7 +38,7 @@ public class FootBallController {
 	}
 
 	@RequestMapping(value = "/fb-seoul")
-	public String seoul(Model model) throws IOException {
+	public String seoul(Model model,String mapx, String mapy) throws IOException {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
 		List<AroundVO> AroundList = aroundService.getAround("126.897243", "37.56823");
@@ -47,10 +47,6 @@ public class FootBallController {
 		List<LocationVO> SeoulFoodList = foodService.get_FoodLocation("1");
 		List<LocationVO> SeoulLodgmentList = lodgmentService.get_LodgmentLocation("1");
 		
-		//대구
-		List<LocationVO> DeaguTourList = tourService.get_TourLocation("4");
-		List<LocationVO> DeaguFoodList = foodService.get_FoodLocation("4");
-		List<LocationVO> DeaguLodgmentList = lodgmentService.get_LodgmentLocation("1");
 
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("SEOULaround",AroundList);
@@ -58,10 +54,6 @@ public class FootBallController {
 		model.addAttribute("SEOULtour",SeoulTourList);
 		model.addAttribute("SEOULfood",SeoulFoodList);
 		model.addAttribute("SEOULlodgment",SeoulLodgmentList);
-		//대구
-		model.addAttribute("SEOULtour",DeaguTourList);
-		model.addAttribute("SEOULfood",DeaguFoodList);
-		model.addAttribute("SEOULlodgment",DeaguLodgmentList);
 		return null;
 	}
 
@@ -70,10 +62,20 @@ public class FootBallController {
 
 		List<FootBallScheduleVO> fblist = fbService.selectAll();
 		List<AroundVO> AroundList = aroundService.getAround("128.588231", "35.881253");
+
+		//대구
+		List<LocationVO> DeaguTourList = tourService.get_TourLocation("4");
+		List<LocationVO> DeaguFoodList = foodService.get_FoodLocation("4");
+		List<LocationVO> DeaguLodgmentList = lodgmentService.get_LodgmentLocation("1");
 		
 		model.addAttribute("FOOTBALL", fblist);
 		model.addAttribute("DEAGUAROUND",AroundList);
 		
+		//대구
+		model.addAttribute("SEOULtour",DeaguTourList);
+		model.addAttribute("SEOULfood",DeaguFoodList);
+		model.addAttribute("SEOULlodgment",DeaguLodgmentList);
+
 		return null;
 	}
 

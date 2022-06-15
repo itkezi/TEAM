@@ -74,7 +74,6 @@ public class AroundServiceImpl implements AroundService{
         //xml json으로 형변환
         JSONObject json = XML.toJSONObject(retString);
         String jsonStr = json.toString(4);
-        log.debug(jsonStr);
         
        
         // JSONObject형식으로 지정
@@ -82,26 +81,21 @@ public class AroundServiceImpl implements AroundService{
         
         //response 안으로
         JSONObject response = jObject.getJSONObject("response");
-        log.debug(response.toString(4));
         
         // body 안으로
         JSONObject body = response.getJSONObject("body");
-        log.debug(body.toString(4));
         
         //items 안으로
         JSONObject items = body.getJSONObject("items");
-        log.debug(items.toString(4));
         
         //item은 배열로 생성
         JSONArray item = items.getJSONArray("item");
-        log.debug(item.toString(4));
       
         //json 배열을 List형으로 변형해서 VO에 저장
         Gson gson = new Gson();
         List<AroundVO> list = gson.fromJson(item.toString(), new TypeToken<List<AroundVO>>(){}.getType());
         
         //값 지정해서 출력 성공!
-        log.debug(list.get(2).title);
         
         
         return list;
@@ -154,7 +148,6 @@ public class AroundServiceImpl implements AroundService{
 		//xml json으로 형변환
 		JSONObject json = XML.toJSONObject(retString);
 		String jsonStr = json.toString(4);
-		log.debug(jsonStr);
 		
 		
 		// JSONObject형식으로 지정
@@ -162,26 +155,21 @@ public class AroundServiceImpl implements AroundService{
 		
 		//response 안으로
 		JSONObject response = jObject.getJSONObject("response");
-		log.debug(response.toString(4));
 		
 		// body 안으로
 		JSONObject body = response.getJSONObject("body");
-		log.debug(body.toString(4));
 		
 		//items 안으로
 		JSONObject items = body.getJSONObject("items");
-		log.debug(items.toString(4));
 		
 		//item은 배열로 생성
 		JSONArray item = items.getJSONArray("item");
-		log.debug(item.toString(4));
 		
 		//json 배열을 List형으로 변형해서 VO에 저장
 		Gson gson = new Gson();
 		List<AroundVO> list = gson.fromJson(item.toString(), new TypeToken<List<AroundVO>>(){}.getType());
 		
 		//값 지정해서 출력 성공!
-		log.debug(list.get(2).title);
 		
 		
 		return list;

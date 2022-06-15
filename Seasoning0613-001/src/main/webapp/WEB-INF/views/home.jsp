@@ -11,11 +11,11 @@
 </head>
 <body>
 	<div class="hj-main">
-		<a class="hj-a-fb hj-a" href="${rootPath}/football"> K-리그
+		<a class="hj-a-fb hj-a" href="${rootPath}/football/fb-seoul"> K-리그
 			<p>정보보러가기</p>
-		</a> <a class="hj-a-bb hj-a" href="${rootPath}/baseball"> KBO-리그
+		</a> <a class="hj-a-bb hj-a" href="${rootPath}/baseball/bb-dusan"> KBO-리그
 			<p>정보보러가기</p>
-		</a> <a class="hj-a-vb hj-a" href="${rootPath}/volleyball"> V-리그
+		</a> <a class="hj-a-vb hj-a" href="${rootPath}/volleyball/fb-seoul"> V-리그
 			<p>정보보러가기</p>
 		</a>
 		<div  class ="hj-video-etr">

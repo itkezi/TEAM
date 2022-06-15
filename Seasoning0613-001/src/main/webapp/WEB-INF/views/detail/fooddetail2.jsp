@@ -12,9 +12,12 @@
 <link rel="stylesheet" href="${rootPath}/static/css/nav.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<script>
+	const rootPath = "${rootPath}"
+</script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
-<script scr="${rootPath}/static/js/detail.js?ver220614-001"></script>
+<%-- <script src="${rootPath}/static/js/detail.js?ver220615-007"></script> --%>
 
 <style>
 body {
@@ -81,46 +84,60 @@ section {
 	width: 1000px;
 	margin: 20px auto;
 	display: flex;
+	justify-content: space-between;
 }
 
 .hj-detail-other a {
-	width: 25px;
+	width: 30px;
 	height: 50px;
 	text-align: center;
 	/* 	background-color: rgb(0, 24, 65); */
-	/* 	color: white; */ background-color : #eee;
+	/* 	color: white; */
+	background-color: #eee;
 	border-radius: 20%;
 	line-height: 50px;
 	background-color: #eee;
+	margin-top: 30px;
 }
 
 .hj-detail-otherbox {
 	width: 900px;
-	height: 500px;
+	height: 220px;
 	display: flex;
 	overflow: hidden;
 }
 
+.hj-detail-otherbox .pl {
+	cursor: pointer;
+	margin: 0 10px;
+}
+
+.hj-detail-otherbox .pl div{
+	margin-bottom: 5px;
+}
+
+.pl:first-of-type {
+	display: none
+}
+
 .hj-detail-otherimg {
-	width: 200px;
-	height: 120px;
+	width: 205px;
+	height: 130px;
 	overflow: hidden;
 }
 
-.hj-detail-otherimg img{
+.hj-detail-otherimg img {
 	width: 100%;
 }
 
-
-
 .hj-detail-otherforeach {
-	padding: 0 10px;
-	width: 200px;
+	cursor: pointer;
+	margin: 0 10px;
 }
 
-.hj-detail-otherbox div:first-of-type { 
- display:none;
- }
+.hj-detail-othercontent {
+	font-size: 13px;
+}
 </style>
 </head>
 <body>
@@ -147,19 +164,19 @@ section {
 			<a class="hj-btn prev">&#10094;</a>
 			<div class="hj-detail-otherbox">
 				<c:forEach items="${AROUND}" var="AROUND">
-				<div>
-					<div class="hj-detail-otherforeach">
-						<div class="hj-detail-otherimg">
-							<img src="${AROUND.firstimage}">
+					<div class='pl' OnClick="location.href ='${rootPath}/detail/fooddetail/${AROUND.contentid}'" >
+						<div data-isbn="${AROUND.contentid}">
+							<div class="hj-detail-otherimg">
+								<img src="${AROUND.firstimage}">
+							</div>
+							<div>
+								<b>${AROUND.title}</b>
+							</div>
+							<div class="hj-detail-othercontent">
+								<p class="hj-other-addr">${AROUND.addr1}</p>
+								<p>${AROUND.tel}</p>
+							</div>
 						</div>
-						<div>
-							[식당]&nbsp; <b>${AROUND.title}</b>
-						</div>
-						<div class="hj-detail-othercontent">
-							<p>${AROUND.addr1}</p>
-							<p>${AROUND.tel}</p>
-						</div>
-					</div>
 					</div>
 				</c:forEach>
 			</div>
