@@ -10,7 +10,7 @@
 
     <logger name="org.springframework" level="INFO" />
     <logger name="com.seasoning.app" level="DEBUG"  additivity="false">
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="STDOUT"/> 
     </logger>
 
     <root level="INFO">
