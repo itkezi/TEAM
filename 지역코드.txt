@@ -1,0 +1,4 @@
+http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=769GgKAkxCM1gXQqQ%2BFZuV%2BhOoEU2bvRonZrg5C4bPrGAJ9syx0HBcJ8%2FU4WY9QK5xDvjWF6rQfqkq1a5tw1zQ%3D%3D&numOfRows=20&MobileOS=ETC&MobileApp=AppTest
+
+http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode?ServiceKey=	
+769GgKAkxCM1gXQqQ%2BFZuV%2BhOoEU2bvRonZrg5C4bPrGAJ9syx0HBcJ8%2FU4WY9QK5xDvjWF6rQfqkq1a5tw1zQ%3D%3D&areaCode=16&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest
